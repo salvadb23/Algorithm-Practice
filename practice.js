@@ -41,3 +41,23 @@ var distributeCandies = function(candies, num_people) {
     }
     return startArr
 };
+
+var findPoisonedDuration = function(timeSeries, duration) {
+    if(timeSeries.length == 0){
+        return 0
+    }
+    if(duration > timeSeries[timeSeries.length - 1]){
+        return duration + (timeSeries[timeSeries.length -1] - timeSeries[0])
+    }
+    let counter = 0;
+    for (let index = 1; index < timeSeries.length; index++) {
+        if (timeSeries[index] - timeSeries[index - 1] >= duration) {
+            // there was no overlap
+            counter += duration
+        } else {
+            counter += timeSeries[index] - timeSeries[index - 1]
+        }
+    }
+    counter += duration
+    return counter
+};
