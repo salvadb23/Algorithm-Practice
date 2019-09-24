@@ -61,3 +61,19 @@ var findPoisonedDuration = function(timeSeries, duration) {
     counter += duration
     return counter
 };
+
+var numComponents = function(head, G) {
+    let count = 0
+    let node = head;
+    let prev = null;
+    while(node){
+        if(G.includes(node.val)){
+            if(prev == null || !G.includes(prev)){
+                count++
+            }
+        }
+        prev = node.val;
+        node = node.next;  
+    }
+    return count
+};
