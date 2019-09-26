@@ -87,3 +87,13 @@ var middleNode = function(head) {
     }
     return slow
 };
+
+var isMonotonic = function(A) {
+    let decrease = true;
+    let increase = true;
+    for(let i = 0; i < A.length; i++){
+        if(A[i] < A[i + 1]) decrease = false;
+        if(A[i] > A[i + 1]) increase = false;
+    }
+    return increase || decrease
+};
