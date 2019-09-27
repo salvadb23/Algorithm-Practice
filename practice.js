@@ -97,3 +97,18 @@ var isMonotonic = function(A) {
     }
     return increase || decrease
 };
+
+function hourglassSum(arr) {
+    const finalArr = []
+
+    for (let outer = 0; outer < 4;outer++) {
+        for (let inner = 0; inner < 4; inner++) {
+            let top = arr[outer][inner] + arr[outer][inner + 1] + arr[outer][inner + 2]
+            let mid = arr[outer + 1][inner + 1]
+            let bot = arr[outer + 2][inner] + arr[outer + 2][inner + 1] + arr[outer + 2][inner + 2] 
+        const sum = top + mid + bot
+        finalArr.push(sum)
+        }
+    }
+    return Math.max(...finalArr)
+}
