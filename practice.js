@@ -112,3 +112,22 @@ function hourglassSum(arr) {
     }
     return Math.max(...finalArr)
 }
+
+function arrayManipulation(n, queries) {
+    let map = {}
+    let largestVal = 0
+    for(const query of queries){
+        let a = query[0]
+        let b = query[1]
+        let k = query[2]
+        
+        for(let i = a; i <= b; i++){
+            map[i] = map[i] + k || k
+            if(map[i] > largestVal){
+                largestVal = map[i]
+            }
+        }
+    }
+    console.log(map)
+    return largestVal
+}
