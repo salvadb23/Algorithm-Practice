@@ -131,3 +131,4 @@ function arrayManipulation(n, queries) {
     console.log(map)
     return largestVal
 }
+
