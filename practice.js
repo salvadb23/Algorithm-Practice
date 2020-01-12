@@ -11,6 +11,34 @@ var replaceWords = function(dict, sentence) {
     return sentArr.join(' ')
 };
 
+var findShortestSubArray = function(nums) {
+    let map = {};
+    let degree = 0
+    for(let i = 0; i < nums.length; i++){
+        if(map[nums[i]]){
+            map[nums[i]][0] += 1
+            if(map[nums[i]][2] < i){
+                map[nums[i]][2] = i
+            }
+        } else {
+            map[nums[i]] = [1, i, i]
+        }
+        if(map[nums[i]][0] > degree){
+            degree = map[nums[i]][0]
+        }
+    }
+    let k = Object.keys(map)
+    let slice = nums.slice(0,nums.length)
+    for(let i = 0; i < k.length; i++){
+        if(map[k[i]][0] == degree){
+            if(nums.slice(map[k[i]][1],map[k[i]][2]).length <                         slice.length){
+                slice = nums.slice(map[k[i]][1],map[k[i]][2] + 1)
+            }
+        }
+    }
+    return slice.length
+};
+
 var topKFrequent = function(nums, k) {
     let histogram = {};
     nums.forEach((num) => {
